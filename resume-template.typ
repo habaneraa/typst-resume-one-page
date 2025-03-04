@@ -1,8 +1,9 @@
 #import "@preview/fontawesome:0.5.0": *
 
-#let sans-serif-font = ("Source Han Sans SC", "New Computer Modern")
-#let serif-font = ("STSong", "KaiTi")
-#let alt-serif-font = ("LXGW WenKai GB Screen", "KaiTi")
+// 总计使用三种字体
+#let sans-serif-font = ("Source Han Sans SC")
+#let serif-font = ("Source Han Serif SC")
+#let alt-serif-font = ("LXGW WenKai GB Screen")
 
 
 #let resume(
@@ -10,12 +11,12 @@
   profile-image: "",
   telephone: "",
   email: "",
-  github: "",
+  github-id: "",
   other-link: "",
   location: "",
   extra-info: "",
-  accent-color: "#000000",
-  background-color: "#e8e6dd",
+  accent-color: rgb("#8758ff"),
+  background-color: rgb("#e2e2da"),
   element-spaciness: 1.00,
   body,
 ) = {
@@ -29,7 +30,7 @@
   // 基础样式
   set page(
     margin: (x: 1.2cm * element-spaciness, y: 1.3cm * element-spaciness), // 页边距
-    fill: rgb(background-color), // 页面背景色
+    fill: background-color, // 页面背景色
   )
   set par(
     justify: true,
@@ -37,21 +38,25 @@
     spacing: 0.9em * element-spaciness, // 段间距
   )
   set text(
-    font: serif-font,
+    font: ( // 这里修一下中文字体里的全角符号
+      (name: "Times New Roman", covers: regex("•")),
+      serif-font,
+    ),
     lang: "zh",
     size: 11pt,     // 全局字号
   )
 
-  // 链接和强调样式 更换主题色
+  // 链接和强调样式
   show link: underline
-  show link: set text(fill: rgb(accent-color))
-  show strong: set text(fill: rgb(accent-color), font: sans-serif-font)
-  show emph: set text(weight: "bold")
+  show emph: underline
+  show link: set text(fill: accent-color)
+  show strong: set text(fill: accent-color, font: sans-serif-font)
+  show emph: set text(weight: "black")
 
   // 小节标题样式 带横线
   show heading: it => {
     text(
-      fill: rgb(accent-color),
+      fill: accent-color,
       font: sans-serif-font,
       it.body
     )
@@ -63,19 +68,23 @@
   // 生成基础信息行
   let personal-infos = ()
   if telephone != "" {
-    personal-infos.push([ #fa-phone-square() #h(0.2em) #telephone ])
+    personal-infos.push([ #fa-phone-square() #h(0.3em) #telephone ])
   }
   if email != "" {
-    personal-infos.push([ #fa-envelope() #h(0.4em) #link("mailto:" + email)[#email] ])
+    personal-infos.push([ #fa-envelope() #h(0.5em) #link("mailto:" + email)[#email] ])
   }
-  if github != "" {
-    personal-infos.push([ #fa-github() #h(0.3em) #link("http://github.com/" + github, "github.com/" + github) ])
+  if github-id != "" {
+    personal-infos.push({
+      fa-github()
+      h(0.6em)
+      link("https://github.com/" + github-id, "github.com/" + github-id)
+    })
   }
   if other-link != "" {
     personal-infos.push([ #fa-link() #h(0.5em)  #link(other-link, other-link) ])
   }
   if location != "" {
-    personal-infos.push([ #fa-location-pin() #h(0.1em)  #location ])
+    personal-infos.push([ #fa-location-pin() #h(0.2em)  #location ])
   }
   if extra-info != "" {
     personal-infos.push(extra-info)
@@ -86,7 +95,11 @@
     place(
       top + right,
       dx: -0.5em,
-      image(profile-image, height: 2em + 3em * element-spaciness, width: auto, fit: "contain")
+      image(
+        profile-image, 
+        height: 3em + 2.5em * element-spaciness, 
+        width: auto, 
+        fit: "contain")
     )
   }
   // 标题和基础信息
@@ -113,7 +126,6 @@
   body
 ) = {
   // 条目首行
-  set text(font: serif-font)
   strong(title)
   if subtitle != "" {
     set text(font: alt-serif-font)
@@ -125,7 +137,13 @@
     date
   }
   linebreak()
+
   // 条目详细内容
-  set text(font: serif-font)
-  body
+  v(-0.4em) // 取消段间距
+  block(
+    height: auto,
+    width: 100%,
+    inset: (right: 0.5em, y:0em),
+    body
+  )
 }
