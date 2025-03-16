@@ -20,10 +20,9 @@
   element-spaciness: 1.00,
   body,
 ) = {
-  
   set document(
     author: author, 
-    title: author + "个人简历", 
+    title: author + " 个人简历", 
     date: datetime.today()
   )
 
@@ -60,9 +59,10 @@
       font: sans-serif-font,
       it.body
     )
-    v(-1em)
-    line(length: 100%)
-    v(0.1em)
+    v(-0.95em)
+    line(length: 100%, stroke: 
+      (paint: luma(40%), thickness: 1.5pt, cap: "round"))
+    v(0.05em)
   }
 
   // 生成基础信息行
@@ -97,7 +97,7 @@
       dx: -0.5em,
       image(
         profile-image, 
-        height: 3em + 2.5em * element-spaciness, 
+        height: 3em + 2.1em * element-spaciness, 
         width: auto, 
         fit: "contain")
     )
