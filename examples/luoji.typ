@@ -4,15 +4,18 @@
 #let hfc = align(center)[#text(fill: luma(60%))[基于Typst的简历模板]]
 #set page(header: hfc, footer: hfc)
 
-#show: resume.with(
+#let (resume-header, resume-entry) = setup-styles(
+  font-size: 11pt,
+  element-spaciness: 1.12,
+)
+
+#show: resume-header.with(
   author: "罗辑",
-  profile-image: "/demos/drluoji-avatar.png",
-  telephone: "123-0000-0000",
+  profile-image: "/assets/drluoji-avatar.png",
+  telephone: "198-9850-2110",
   email: "luoji@example.com",
   other-link: "http://typst.app/",
-  location: "北京",
-  accent-color: rgb("#b68331"),
-  element-spaciness: 0.95
+  location: [北京],
 )
 
 = 教育经历
@@ -108,15 +111,11 @@
   - 为人类文明研制出曲率引擎。
 ]
 
+= 奖项和荣誉
+
++ 诺贝尔和平奖，菲尔兹奖，图灵奖，国家科技进步一等奖
+
 = 个人总结
 
 - 社会学与天文学双博士，具备跨学科思维能力和创新思维
 - 具有非凡的洞察力、战略思维、决策能力；能在极端压力下、面对生命威胁和人类命运存亡时，保持理性判断
-
-= 奖项和荣誉
-
-+ 诺贝尔和平奖，菲尔兹奖，图灵奖，国家科技进步一等奖，奥运会所有项目金牌  #h(1fr) 2019
-
-= 出版物
-
-#kouhu(builtin-text: "aspirin", length: 202)
