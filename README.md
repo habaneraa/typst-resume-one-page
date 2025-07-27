@@ -12,20 +12,20 @@
 
 ## 快速开始
 
-使用本模板，你通过编写 Typst 源文件来制作简历，借助 IDE 插件可以实时预览。编写文件只需要用到基本的标记，语法非常简单，不需要编程语言基础。
+使用本模板，你将通过编写 Typst 源文件来制作简历，借助 IDE 插件可以实时预览。编写文件只需要用到基本的标记语法，不需要编程语言基础。
 
 ![教程示例](assets/tutorial.png)
 
-1. 克隆本仓库
+1. 克隆本仓库，或者下载 [Release 包](https://github.com/habaneraa/typst-resume-one-page/releases)
    ```bash
    git clone https://github.com/habaneraa/typst-resume-one-page.git
    ```
 
-2. 打开你喜欢的 IDE，安装插件 [TinyMist](https://github.com/Myriad-Dreamin/tinymist)
+2. 打开你喜欢的 IDE (例如 VSCode)，搜索并安装插件 [Tinymist](https://github.com/Myriad-Dreamin/tinymist)
 
 3. 编辑示例文件 `examples/luoji.typ` 或 `examples/quick_start.typ`，编写你的简历内容
 
-4. 点击 "Preview"，借助 TinyMist 可以实时查看效果
+4. 在文件起始处点击 "Preview"，借助 Tinymist 可以实时查看效果
 
 5. 排版：通过调整 `font-size`、`element-spaciness` 等参数，使得内容刚好填充一页；也可以通过 `accent-color`、`serif-font` 等参数自定义样式，彰显个性。
 
@@ -87,3 +87,5 @@
 如果不希望使用 `resume-entry` 提供的样式，可以直接编写正文，这通常用于不需要段落区分的小节，例如 “个人总结” 或 “技能”。
 
 *One More Thing*: 现代 IDE 里面的 coding agent 只需要引用到两个 typ 文件即可获取全部上下文，你完全可以使用 Copilot/Cursor/ClaudeCode 等工具帮助你调整内容、润色文本、修改样式。
+
+<p align="center">最后祝你求职顺利🥰~ </p>
