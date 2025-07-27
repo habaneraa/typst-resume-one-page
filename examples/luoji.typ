@@ -1,5 +1,4 @@
 #import "../resume-template.typ": *
-#import "@preview/kouhu:0.1.0": kouhu
 
 #let hfc = align(center)[#text(fill: luma(60%))[基于Typst的简历模板]]
 #set page(header: hfc, footer: hfc)
