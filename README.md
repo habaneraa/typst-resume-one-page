@@ -40,18 +40,18 @@
 
 样式设置参数：
 
-| 参数名 | 说明 | 默认值/推荐值 |
+| 参数名 | 说明 | 默认值 |
 |---------------------|------------------------------|-------------------|
-| `accent-color`      | 主颜色，如不需要可以设置为黑色 `rgb("#000000")` | `rgb("#179299")` (青色) |
-| `background-color`  | 背景色 | `rgb("#e6e9e9")` (浅灰色) |
-| `sans-serif-font`   | 标题的衬线字体 | Source Han Sans SC (思源黑体) |
+| `accent-color`      | 主颜色，如不需要彩色可设为 `rgb("#000000")` | `rgb("#179299")` (青色) |
+| `background-color`  | 背景色，如不需要彩色可设为 `rgb("#FFFFFF")` | `rgb("#e6e9e9")` (浅灰色) |
+| `sans-serif-font`   | 标题文本的衬线字体 | Source Han Sans SC (思源黑体) |
 | `serif-font`        | 正文文本的无衬线字体 | Source Han Serif SC (思源宋体) |
 | `alt-serif-font`    | 第二种衬线字体，用于副标题 | LXGW WenKai GB Screen (霞鹜文楷) |
 | `font-size`         | 字体大小（会同时影响字大小和间距），推荐 10pt–12pt | 11pt |
 | `element-spaciness` | 元素距离乘数（影响页边距和行距），可调节整体排版 | 推荐在 0.9 到 1.5 之间进行调整 |
 | `separator`         | 分隔不同信息的符号 | ` \| ` |
 
-请注意，如果你的设备上缺少相关字体，你可以更改为其他常见字体，或者手动安装[思源黑体](https://github.com/adobe-fonts/source-han-sans)、[思源宋体](https://github.com/adobe-fonts/source-han-serif)、[霞鹜文楷](https://github.com/lxgw/LxgwWenKai-Screen). 此外，如果你发现你的图标不能正常显示，请手动下载安装 [FontAwesome 7 字体](https://fontawesome.com/download).
+请注意，如果你的设备上缺少相关字体，你可以更改为其他常见字体（例如 Microsoft YaHei 微软雅黑），或者手动安装[思源黑体](https://github.com/adobe-fonts/source-han-sans)、[思源宋体](https://github.com/adobe-fonts/source-han-serif)、[霞鹜文楷](https://github.com/lxgw/LxgwWenKai-Screen). 此外，如果你发现你的图标不能正常显示，请手动下载安装 [FontAwesome 7 字体](https://fontawesome.com/download).
 
 **第二步**，使用 `resume-header` 填写基本信息和联系方式。
 
