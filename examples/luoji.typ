@@ -5,16 +5,17 @@
 
 #let (resume-header, resume-entry) = setup-styles(
   font-size: 11pt,
-  element-spaciness: 1.12,
+  element-spaciness: 1.10,
 )
 
 #show: resume-header.with(
   author: "罗辑",
   profile-image: "/assets/drluoji-avatar.png",
+  basic-info: ([_男 · 博士研究生 · 中共党员_],),
   telephone: "198-9850-2110",
   email: "luoji@example.com",
   other-link: "http://typst.app/",
-  location: [北京],
+  location: "北京",
 )
 
 = 教育经历
@@ -112,7 +113,8 @@
 
 = 奖项和荣誉
 
-+ 诺贝尔和平奖，菲尔兹奖，图灵奖，国家科技进步一等奖
++ 诺贝尔和平奖 #h(1fr) 2099 年
++ 菲尔兹奖，图灵奖，国家科技进步一等奖 #h(1fr) 2055 年
 
 = 个人总结
 

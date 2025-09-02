@@ -1,4 +1,4 @@
-#import "@preview/fontawesome:0.5.0": *
+#import "@preview/fontawesome:0.6.0": *
 
 #let setup-styles(
   accent-color: rgb("#179299"),
@@ -14,12 +14,12 @@
   let resume-header(
     author: "",
     profile-image: "",
+    basic-info: (),
     telephone: "",
     email: "",
     github-id: "",
     other-link: "",
     location: "",
-    extra-infos: (),
     body,
   ) = {
     set document(
@@ -30,7 +30,7 @@
 
     // 基础样式
     set page(
-      margin: (x: 1.2cm * element-spaciness, y: 1.3cm * element-spaciness), // 页边距
+      margin: (x: 1.2cm * element-spaciness, y: 1.2cm * element-spaciness), // 页边距
       fill: background-color, // 页面背景色
     )
     set par(
@@ -50,7 +50,7 @@
 
     // 链接和强调样式
     show link: underline
-    show emph: underline
+    // show emph: underline
     show link: set text(fill: accent-color)
     show strong: set text(fill: accent-color)
     show emph: set text(weight: "black")
@@ -62,45 +62,47 @@
         font: sans-serif-font,
         it.body
       )
-      v(-0.95em)
+      v(-1.0em)
       line(length: 100%, stroke: 
         (paint: luma(40%), thickness: 1.5pt, cap: "round"))
-      v(0.05em)
     }
 
-    // 生成基础信息行
-    let personal-infos = ()
+    // 生成联系方式内容
+    let contacts = ()
     if telephone != "" {
-      personal-infos.push([ #fa-phone-square() #h(0.3em) #telephone ])
+      contacts.push([ #fa-phone() #h(0.2em) #telephone ])
     }
     if email != "" {
-      personal-infos.push([ #fa-envelope() #h(0.5em) #link("mailto:" + email)[#email] ])
+      contacts.push([ #fa-envelope(solid: true) #h(0.3em) #link("mailto:" + email)[#email] ])
     }
     if github-id != "" {
-      personal-infos.push({
+      contacts.push({
+        h(0.2em)
         fa-github()
-        h(0.6em)
+        h(0.4em)
         link("https://github.com/" + github-id, "github.com/" + github-id)
       })
     }
     if other-link != "" {
-      personal-infos.push([ #fa-link() #h(0.5em)  #link(other-link, other-link) ])
+      contacts.push([ #fa-link() #h(0.2em)  #link(other-link, other-link) ])
     }
     if location != "" {
-      personal-infos.push([ #fa-location-pin() #h(0.2em)  #location ])
-    }
-    if extra-infos.len() > 0 {
-      personal-infos += extra-infos
+      contacts.push([ #fa-location-dot() #h(0.2em) #location])
     }
 
     // 右上角图像
     if profile-image != "" {
+      // 适应标题小节的高度
+      let header-height = 3em + 2.1em * element-spaciness
+      if basic-info.len() > 0 {
+        header-height += 1em + 0.5em * element-spaciness
+      }
       place(
         top + right,
         dx: -0.5em,
         image(
           profile-image, 
-          height: 3em + 2.1em * element-spaciness, 
+          height: header-height, 
           width: auto, 
           fit: "contain")
       )
@@ -114,8 +116,12 @@
       {
         text(font: sans-serif-font, weight: 700, 2.0em, author)
         linebreak()
-        v(0.5em * element-spaciness)
-        personal-infos.join(separator)
+        v(0.2em * element-spaciness)
+        if basic-info.len() > 0 {
+          basic-info.join(separator)
+          linebreak()
+        }
+        contacts.join(separator)
       }
     )
     

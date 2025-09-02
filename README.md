@@ -4,8 +4,6 @@
 
 基于 [Typst](https://typst.app/) 的中文简历模板。极简，易用，轻松排版，高度定制。能无痛排版让内容刚好填满一页。
 
-## 效果展示
-
 ![简历效果预览](assets/luoji.png)
 
 ---
@@ -25,15 +23,13 @@
 
 3. 编辑示例文件 `examples/luoji.typ` 或 `examples/quick_start.typ`，编写你的简历内容
 
-4. 在文件起始处点击 "Preview"，借助 Tinymist 可以实时查看效果
+4. 在文件起始处点击 "Preview"，借助插件功能可以实时查看效果
 
-5. 排版：通过调整 `font-size`、`element-spaciness` 等参数，使得内容刚好填充一页；也可以通过 `accent-color`、`serif-font` 等参数自定义样式，彰显个性。
-
-6. 点击 "Export PDF" 导出 PDF 格式简历（Tinymist 功能）。或者使用 `typst compile` 命令行工具进行编译。
+5. 点击 "Export PDF" 导出 PDF 格式简历（Tinymist 功能）。或者使用 `typst compile` 命令行工具进行编译。
 
 ## 使用指南
 
-第一步，在你的 Typst 源文件里导入模板，并初始化样式：
+**第一步**，在你的 Typst 源文件里导入模板，并初始化样式：
 
 ```typst
 #import "resume-template.typ": setup-styles
@@ -42,33 +38,41 @@
 )
 ```
 
-样式设置：
+样式设置参数：
 
-- `accent-color`：主颜色，如不需要可以设置为黑色 `rgb("#000000")`
-- `background-color`：背景色，默认是浅灰色 `rgb("#e6e9e9")`
-- `sans-serif-font`：用作正文文本的无衬线字体，默认是 Source Han Sans SC
-- `serif-font`：用作标题的衬线字体，默认是 Source Han Serif SC
-- `alt-serif-font`：第二种衬线字体，用于副标题，默认是 LXGW WenKai GB Screen
-- `font-size`：字体大小推荐 10pt 到 12pt，默认值是 11pt
-- `element-spaciness`：元素距离乘数，会同时影响页边距和行距，用于调整排版，可以尝试在 0.9 到 1.5 之间进行调整
-- `separator`：用于分隔不同信息的符号，默认是竖线
+| 参数名 | 说明 | 默认值/推荐值 |
+|---------------------|------------------------------|-------------------|
+| `accent-color`      | 主颜色，如不需要可以设置为黑色 `rgb("#000000")` | `rgb("#179299")` (青色) |
+| `background-color`  | 背景色 | `rgb("#e6e9e9")` (浅灰色) |
+| `sans-serif-font`   | 标题的衬线字体 | Source Han Sans SC (思源黑体) |
+| `serif-font`        | 正文文本的无衬线字体 | Source Han Serif SC (思源宋体) |
+| `alt-serif-font`    | 第二种衬线字体，用于副标题 | LXGW WenKai GB Screen (霞鹜文楷) |
+| `font-size`         | 字体大小（会同时影响字大小和间距），推荐 10pt–12pt | 11pt |
+| `element-spaciness` | 元素距离乘数（影响页边距和行距），可调节整体排版 | 推荐在 0.9 到 1.5 之间进行调整 |
+| `separator`         | 分隔不同信息的符号 | ` \| ` |
 
-第二步，使用 `resume-header` 填写基本信息，这里除了 `author` 外的信息都是可选的。
+请注意，如果你的设备上缺少相关字体，你可以更改为其他常见字体，或者手动安装[思源黑体](https://github.com/adobe-fonts/source-han-sans)、[思源宋体](https://github.com/adobe-fonts/source-han-serif)、[霞鹜文楷](https://github.com/lxgw/LxgwWenKai-Screen). 此外，如果你发现你的图标不能正常显示，请手动下载安装 [FontAwesome 7 字体](https://fontawesome.com/download).
+
+**第二步**，使用 `resume-header` 填写基本信息和联系方式。
 
 ```typst
 #show: resume-header.with(
   author: "你的名字",
   profile-image: "/image.png", // 头像图片路径
+  basic-info: (),              // 基础信息行内容
   telephone: "",               // 电话号码
   email: "",                   // 邮箱地址
   github-id: "",               // GitHub 用户名，会自动生成主页链接
-  other-link: "",              // 填写 URL，会自动生成链接
+  other-link: "",              // 填写任意 URL，会自动生成链接
   location: "",                // 位置，例如 [北京-海淀区]
-  extra-infos: (),             // 可以按列表形式填写其他信息
 )
 ```
 
-第三步，编写正文。
+说明：
+- 所有字段信息都可以留空不填，空字段不会显示；
+- `basic-info` 是单独设置的一行基础信息，如果填入，则会在名字下方生成两行内容。一般情况下，简历中包含联系方式和地址已经足够，如果投递简历需要其他关键基础信息，例如性别、年龄、求职意向、政治面貌等，可以填这里。如果不填该参数则不会显示基础信息行。
+
+**第三步**，编写正文。
 
 使用 `= 标题` 来创建最显眼的一级标题，通常为 “教育经历”，“项目经历”，“技能”，“荣誉奖项” 等。
 
@@ -87,5 +91,7 @@
 如果不希望使用 `resume-entry` 提供的样式，可以直接编写正文，这通常用于不需要段落区分的小节，例如 “个人总结” 或 “技能”。
 
 *One More Thing*: 现代 IDE 里面的 coding agent 只需要引用到两个 typ 文件即可获取全部上下文，你完全可以使用 Copilot/Cursor/ClaudeCode 等工具帮助你调整内容、润色文本、修改样式。
+
+---
 
 <p align="center">最后祝你求职顺利🥰~ </p>
