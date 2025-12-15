@@ -2,13 +2,13 @@
 
 #let setup-styles(
   accent-color: rgb("#179299"),
-  background-color: rgb("#e6e9e9"),
+  background-color: rgb("#ffffff"),
   sans-serif-font: "Source Han Sans SC",
   serif-font: "Source Han Serif SC", 
-  alt-serif-font: "LXGW WenKai GB Screen",
+  alt-font: "Source Han Sans SC",
   font-size: 11pt,
   element-spaciness: 1.00,
-  separator: " | "
+  separator: " · "
 ) = {
   
   let resume-header(
@@ -50,7 +50,6 @@
 
     // 链接和强调样式
     show link: underline
-    // show emph: underline
     show link: set text(fill: accent-color)
     show strong: set text(fill: accent-color)
     show emph: set text(weight: "black")
@@ -58,7 +57,6 @@
     // 小节标题样式 带横线
     show heading: it => {
       text(
-        fill: accent-color,
         font: sans-serif-font,
         it.body
       )
@@ -137,22 +135,24 @@
     // 条目首行
     strong(text(title, font: sans-serif-font))
     if subtitle != "" {
-      text(font: alt-serif-font, separator + subtitle)
+      text(font: alt-font, separator + subtitle)
     }
     if date != "" {
       h(1fr)
-      text(font: alt-serif-font, date)
+      text(font: alt-font, date)
     }
-    linebreak()
-
+    
     // 条目详细内容
-    v(-0.4em) // 取消段间距
-    block(
-      height: auto,
-      width: 100%,
-      inset: (right: 0.5em, y:0em),
-      body
-    )
+    if (body != []) {
+      linebreak()
+      v(-0.4em * element-spaciness) // 取消段间距
+      block(
+        height: auto,
+        width: 100%,
+        inset: (right: 0.5em, y:0em),
+        body
+      )
+    }
   }
 
   (

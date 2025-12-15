@@ -16,7 +16,7 @@
 )[
   - 这是一个基于 Typst 的中文简历模板
   - 极简，自由书写，轻松排版，高度定制
-  - 语法简单，快速上手，可以使用 #emph[强调] ; #strong[高亮] ; `monospaced` ; #link("https://bing.com")[链接] 等样式
+  - 多种文本样式：_强调_ ; *高亮* ; `monospaced` ; #underline[下划线] ; #link("https://github.com")[超链接]
 ]
 
 = 工作经历
